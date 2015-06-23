@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<title>DispersalImg Chart</title>
+                <script src="../Chart.js"></script>
+                <script src="../src/dispersalimg.js"></script>
+	</head>
+	<body>
+            <div style="width: 50%">
+			<canvas id="canvas" height="600" width="600"></canvas>
+		</div>
+
+
+	<script>
+        
+	var randomScalingFactor = function(){ return Math.round(Math.random()*1000)};
+
+	var dispersalData = {
+		labels : ["Mercantil","Banesco","uniseguro","Manfre","catatumbo","seguritas"],
+                labelX :"Prima Asegurada",
+                labelY :"Suma Asegurada",
+                labelProm:"Promedio",
+		datasets : [
+			{
+                                fillColor : "rgba(220,220,220,0.5)",
+				strokeColor : "rgba(220,220,220,0.8)",
+				highlightFill: "rgba(220,220,220,0.75)",
+				highlightStroke: "rgba(220,220,220,1)",
+                                
+                                fillColorProm : "rgba(220,220,220,0.5)",
+				strokeColorProm : "rgba(220,220,220,0.8)",
+				highlightFillProm: "rgba(220,220,220,0.75)",
+				highlightStrokeProm: "rgba(220,220,220,1)",
+                                dataXY:[
+                                         {x:randomScalingFactor(),y:randomScalingFactor(),imgSrc:"../images/banesco.png"},
+                                         {x:randomScalingFactor(),y:randomScalingFactor(),imgSrc:"../images/constitucion.png"},
+                                         {x:randomScalingFactor(),y:randomScalingFactor(),imgSrc:"../images/ibero.png"},
+                                         {x:randomScalingFactor(),y:randomScalingFactor(),imgSrc:"../images/mapfre.png"},
+                                         {x:randomScalingFactor(),y:randomScalingFactor(),imgSrc:"../images/mercantil.png"},
+                                         {x:randomScalingFactor(),y:randomScalingFactor(),imgSrc:"../images/multinacional.png"}
+                                     ]
+			}
+		]
+
+	}
+	
+        window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		var chart=new Chart(ctx).DispersalImg(dispersalData, {
+			responsive : true,
+                        scaleBeginAtZero:true
+		});
+	}
+
+	</script>
+	</body>
+</html>
